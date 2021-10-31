@@ -5,13 +5,14 @@ import {document} from "ngx-bootstrap/utils";
     selector: 'app-tic-tac-toe',
     template: `
         <div class="container">
-            <div class="card bg-success text-light mt-3">
+            <div class="card mt-3">
                 <div class="card-header">
                     <h2 class="card-title">Jeux de Tic Tac Toe</h2>
                 </div>
                 <div class="card-body" *ngIf="!gameCompleted">
                     <div *ngIf="!gameCompleted" class="grid" (click)="cellClick($event)">
-                        <div *ngFor="let i of [0,1,2,3,4,5,6,7,8]" class="cell" [id]="i"></div>
+                        <div [id]="i" class="cell" *ngFor="let i of [0,1,2,3,4,5,6,7,8]"
+                             [style.fontSize]="fontSize"></div>
                     </div>
 
                 </div>
@@ -52,9 +53,8 @@ import {document} from "ngx-bootstrap/utils";
           }
 
           .cell {
-            background-color: azure;
-            color: black;
-            font-size: 8em;
+            background-color: black;
+            color: white;
             font-weight: bold;
             text-align: center;
             user-select: none;
@@ -69,11 +69,17 @@ export class TicTacToeComponent implements OnInit {
     computerTurn = false;
     gameCompleted = false;
     winner: '' | 'player' | 'computer' = '';
+    fontSize: string = '';
 
     constructor() {
     }
 
     ngOnInit(): void {
+        if (window.innerHeight < window.innerWidth) {
+            this.fontSize = '20vh'
+        } else {
+            this.fontSize = '20vw'
+        }
     }
 
     cellClick(e: any) {

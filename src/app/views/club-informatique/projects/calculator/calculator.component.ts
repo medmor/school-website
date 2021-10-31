@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-calculator',
     template: `
         <div class="container p-3">
-            <div class="card bg-success text-light shadow mt-2 p-2">
+            <div class="card shadow mt-2 p-2">
                 <div class="card-header shadow mt-1">
                     <h2 class="card-title">Calculateur</h2>
                 </div>
-                <div class="card-body bg-dark bg-gradient text-light">
+                <div class="card-body ">
                     <div class="maindisplay">
                         <div class="subdisplay">{{ subDisplayText }}</div>
                         {{ mainDisplayText }}
@@ -52,57 +51,56 @@ import {Component, OnInit} from '@angular/core';
     `,
     styles: [
         `
-          .card {
-            margin: auto;
-            max-width: 400px;
-            height: 580px;
-          }
+            .card {
+                margin: auto;
+                max-width: 400px;
+                height: 580px;
+            }
 
-          .maindisplay {
-            height: 140px;
-            font-size: 4rem;
-            text-align: right;
-          }
+            .maindisplay {
+                height: 140px;
+                font-size: 4rem;
+                text-align: right;
+            }
 
-          .subdisplay {
-            border-bottom: 1px solid white;
-            height: 30%;
-            font-size: 2rem;
-          }
+            .subdisplay {
+                border-bottom: 1px solid black;
+                height: 30%;
+                font-size: 2rem;
+            }
 
+            .keys {
+                height: 60px;
+                width: 25%;
+                font-size: 2rem;
+                text-align: center;
+                cursor: pointer;
+                border: gray 1px solid;
+            }
 
-          .keys {
-            height: 60px;
-            width: 25%;
-            font-size: 2rem;
-            text-align: center;
-            cursor: pointer;
-            border: gray 1px solid;
-          }
+            .keys:hover {
+                opacity: 0.9;
+            }
 
-          .keys:hover {
-            opacity: .9;
-          }
+            .ackey {
+                color: red;
+                background: orange;
+            }
 
-          .ackey {
-            color: red;
-            background: orange;
-          }
+            .equalkey {
+                color: white;
+                background-color: orangered;
+            }
 
-          .equalkey {
-            color: white;
-            background-color: orangered;
-          }
+            .numkey {
+                color: skyblue;
+                background-color: white;
+            }
 
-          .numkey {
-            color: skyblue;
-            background-color: white;
-          }
-
-          .opkey {
-            color: white;
-            background-color: black;
-          }
+            .opkey {
+                color: white;
+                background-color: black;
+            }
         `,
     ],
 })
@@ -113,13 +111,10 @@ export class CalculatorComponent implements OnInit {
     operand2: number | undefined;
     operator = '';
     calculationString = '';
-    // This string  denotes the operation being performed
     answered = false;
-    //  flag to check whether the solution has been processed
     operatorSet = false;
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     pressKey(key: string) {
         if (key === '/' || key === 'x' || key === '-' || key === '+') {
@@ -127,7 +122,7 @@ export class CalculatorComponent implements OnInit {
             if (lastKey === '/' || lastKey === 'x' || lastKey === '-' || lastKey === '+') {
                 this.operatorSet = true;
             }
-            if ((this.operatorSet) || (this.mainDisplayText === '')) {
+            if (this.operatorSet || this.mainDisplayText === '') {
                 return;
             }
             this.operand1 = parseFloat(this.mainDisplayText);
@@ -146,9 +141,7 @@ export class CalculatorComponent implements OnInit {
         this.operatorSet = false;
     }
 
-    clearLast() {
-
-    }
+    clearLast() {}
 
     getAnswer() {
         this.calculationString = this.mainDisplayText;

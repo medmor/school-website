@@ -5,7 +5,7 @@ import {Subscription, timer} from "rxjs";
     selector: 'app-chonometre',
     template: `
         <div class="container p-3">
-            <div class="card bg-success text-light shadow mt-5">
+            <div class="card shadow mt-5">
                 <div class="card-header shadow">
                     <h2 class="card-title">Chronomètre</h2>
                 </div>
@@ -42,14 +42,18 @@ export class ChronometreComponent implements OnInit {
     }
 
     startTimer() {
-        this.timerSubscription = timer(0, 10).subscribe(ec => {
-            this.ms++;
-            this.timerDisplay = this.getDisplayTimer(this.ms);
-        });
+        if (this.timerSubscription === undefined) {
+            this.timerSubscription = timer(0, 10).subscribe(ec => {
+                this.ms++;
+                this.timerDisplay = this.getDisplayTimer(this.ms);
+            });
+        }
+
     }
 
     stopTimer() {
         this.timerSubscription?.unsubscribe();
+        this.timerSubscription = undefined;
     }
 
     resetTimer() {

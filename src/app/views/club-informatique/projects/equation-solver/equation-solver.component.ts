@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
     selector: 'app-equation-solver',
     template: `
         <div class="container p-3">
-            <div class="card bg-success text-light shadow mt-5">
+            <div class="card shadow mt-5">
                 <div class="card-header shadow">
                     <h2 class="card-title">Programme simple pour résoudre une équation du premier degré</h2>
                 </div>
