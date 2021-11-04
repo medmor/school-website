@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Subscription, timer} from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
     selector: 'app-chonometre',
@@ -10,7 +10,7 @@ import {Subscription, timer} from "rxjs";
                     <h2 class="card-title">Chronomètre</h2>
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="my-5">{{timerDisplay}}</h1>
+                    <p class="my-5" style="font-size: 3em;font-weight:bold;">{{ timerDisplay }}</p>
                     <div class="text-center my-2">
                         <button class="btn btn-dark" (click)="startTimer()">Start</button>
                         <button class="btn btn-dark mx-2" (click)="stopTimer()">Stop</button>
@@ -19,36 +19,32 @@ import {Subscription, timer} from "rxjs";
                 </div>
             </div>
         </div>
-    `, styles: [
+    `,
+    styles: [
         `
-          .card {
-            max-width: 600px;
-            margin: auto;
-          }
-
+            .card {
+                max-width: 600px;
+                margin: auto;
+            }
         `,
     ],
 })
-
 export class ChronometreComponent implements OnInit {
     timerSubscription: Subscription | undefined = undefined;
     ms = 0;
-    timerDisplay = '0'
+    timerDisplay = '00 : 00 : 00';
 
-    constructor() {
-    }
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     startTimer() {
         if (this.timerSubscription === undefined) {
-            this.timerSubscription = timer(0, 10).subscribe(ec => {
+            this.timerSubscription = timer(0, 10).subscribe((ec) => {
                 this.ms++;
                 this.timerDisplay = this.getDisplayTimer(this.ms);
             });
         }
-
     }
 
     stopTimer() {
@@ -57,18 +53,26 @@ export class ChronometreComponent implements OnInit {
     }
 
     resetTimer() {
-        this.stopTimer()
+        this.stopTimer();
         this.ms = 0;
-        this.timerDisplay = this.getDisplayTimer(this.ms)
+        this.timerDisplay = this.getDisplayTimer(this.ms);
     }
 
     getDisplayTimer(ms: number) {
-        return (
-            Math.floor(ms / (100 * 60 * 60))
-            + ":" + Math.floor(ms / (100 * 60)) % 60
-            + ":" + Math.floor(ms / 100) % 60
-            + ":" + Math.floor(ms % 100));
+        const fracts = Math.floor(ms % 100);
+        const seconds = Math.floor(ms / 100) % 60;
+        const minuts = Math.floor(ms / (100 * 60)) % 60;
+        const hours = Math.floor(ms / (100 * 60 * 60));
+
+        const disp =
+            '' +
+            (hours > 0 ? hours + ' : ' : '') +
+            (minuts < 10 ? '0' + minuts : minuts) +
+            ' : ' +
+            (seconds < 10 ? '0' + seconds : seconds) +
+            ' : ' +
+            (fracts < 10 ? '0' + fracts : fracts);
+
+        return disp;
     }
-
-
 }
