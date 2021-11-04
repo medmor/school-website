@@ -28,19 +28,43 @@ import { NavigationEnd, Router } from '@angular/router';
                 <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" [class.active]="currentActiveUrl === '/acceuil'" href="/">Acceuil</a>
+                            <a class="nav-link" [class.active]="currentActiveUrl === '/acceuil'" (click)="navigateTo('/')" href=""
+                                >Acceuil</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [class.active]="currentActiveUrl === '/reglement'" href="reglement">Reglement</a>
+                            <a
+                                class="nav-link"
+                                [class.active]="currentActiveUrl === '/reglement'"
+                                (click)="navigateTo('/reglement')"
+                                href=""
+                                >Reglement</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [class.active]="currentActiveUrl === '/historique'" href="historique">Historique</a>
+                            <a
+                                class="nav-link"
+                                [class.active]="currentActiveUrl === '/historique'"
+                                (click)="navigateTo('/historique')"
+                                href=""
+                                >Historique</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [class.active]="currentActiveUrl === '/evenements'" href="evenements">Evénements</a>
+                            <a
+                                class="nav-link"
+                                [class.active]="currentActiveUrl === '/evenements'"
+                                (click)="navigateTo('/evenements')"
+                                href=""
+                                >Evénements</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [class.active]="currentActiveUrl.includes('club-informatique')" href="club-informatique"
+                            <a
+                                class="nav-link"
+                                [class.active]="currentActiveUrl.includes('club-informatique')"
+                                (click)="navigateTo('/club-informatique')"
+                                href=""
                                 >Club Informatique</a
                             >
                         </li>
