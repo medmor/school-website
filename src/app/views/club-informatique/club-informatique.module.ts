@@ -14,6 +14,7 @@ import { CalculatorComponent } from './projects/calculator/calculator.component'
 import { TicTacToeComponent } from './projects/tic-tac-toe/tic-tac-toe.component';
 import { MemoryGameComponent } from './projects/memory-game/memory-game.component';
 import { MatchingGameComponent } from './projects/matching-game/matching-game.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,6 @@ import { MatchingGameComponent } from './projects/matching-game/matching-game.co
         MemoryGameComponent,
         MatchingGameComponent,
     ],
-    imports: [CommonModule, ClubInformatiqueRouting, FormsModule, ButtonsModule.forRoot()],
+    imports: [CommonModule, ClubInformatiqueRouting, FormsModule, ButtonsModule.forRoot(), TranslateModule],
 })
 export class ClubInformatiqueModule {}

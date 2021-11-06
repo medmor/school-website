@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-club-informatique',
     template: `
         <div class="container p-3" style="font-size: 1.2em">
-            <div class="card mb-3 shadow text-center">
+            <div *ngIf="content" class="card mb-3 shadow text-center">
                 <div class="card-body">
                     <div class="card-title">
-                        <h5>{{ content.firstCard.title }}</h5>
+                        <h3>{{ content.firstCard.title }}</h3>
                     </div>
                     <div class="card-text">
                         {{ content.firstCard.text }}
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div *ngIf="content" class="row">
                 <div *ngFor="let card of content.cards" class="col-md-6 mb-3">
                     <div class="card shadow ">
                         <div class="card-body">
                             <div class="card-title">
-                                <h5>{{ card.title }}</h5>
+                                <h3>{{ card.title }}</h3>
                             </div>
                             <div class="card-text">
                                 {{ card.text }}
@@ -29,9 +30,11 @@ import { Router } from '@angular/router';
                     </div>
                 </div>
             </div>
-            <div class="card shadow ">
+            <div *ngIf="projects" class="card shadow ">
                 <div class="card-header shadow">
-                    <div class="card-title"><h3>Exemples de projets à réaliser durant les séances</h3></div>
+                    <div class="card-title">
+                        <h3>{{ 'CLUB-INFORMATIQUE.projectsTitle' | translate }}</h3>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -44,7 +47,9 @@ import { Router } from '@angular/router';
                                     <div class="card-title">
                                         {{ project.title }}
                                     </div>
-                                    <button class="btn btn-dark float-end">Voir</button>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-dark">{{ 'CLUB-INFORMATIQUE.projectsCardButton' | translate }}</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -55,12 +60,24 @@ import { Router } from '@angular/router';
     `,
 })
 export class ClubInformatiqueComponent implements OnInit {
-    content = content;
-    projects = projects;
+    content: any;
+    projects: any;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private translateService: TranslateService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.getTranslation(this.translateService.currentLang);
+        this.translateService.onLangChange.subscribe((event) => {
+            this.getTranslation(event.lang);
+        });
+    }
+    getTranslation(lang: string) {
+        const currentTranslation = this.translateService.translations[lang];
+        this.content = {};
+        this.content.firstCard = this.translateService.getParsedResult(currentTranslation, 'CLUB-INFORMATIQUE.firstCard');
+        this.content.cards = this.translateService.getParsedResult(currentTranslation, 'CLUB-INFORMATIQUE.cards');
+        this.projects = this.translateService.getParsedResult(currentTranslation, 'CLUB-INFORMATIQUE.projects');
+    }
 
     navigateToProject(path: string) {
         this.router.navigateByUrl('/club-informatique' + path);

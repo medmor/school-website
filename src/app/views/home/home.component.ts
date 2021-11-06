@@ -1,37 +1,61 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component({
     selector: 'app-home',
     template: `
-        <div class="container bg-white pt-1">
-            <header class=" p-2 border-bottom ">
-                <h3>Page d'acceuil en cours de construction</h3>
-                <img src="assets/en-cours-de-preparation.jpg" alt="en cours de preparation" style="width: 100%">
-            </header>
-            <main class=" p-2 border-bottom">
-                <h3>Page d'acceuil en cours de construction</h3>
-                <img src="assets/en-cours-de-preparation.jpg" alt="en cours de preparation" style="width: 100%">
-            </main>
-            <footer class=" p-2">
-                <h3>Page d'acceuil en cours de construction</h3>
-                <img src="assets/en-cours-de-preparation.jpg" alt="en cours de preparation" style="width: 100%">
-            </footer>
+        <div class="container bg-white pt-1 text-center">
+            <carousel>
+                <slide>
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D453889076448496%26id%3D107885867715487&show_text=true&width=500"
+                        width="100%"
+                        height="550"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    ></iframe>
+                </slide>
+                <slide>
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D449935373510533%26id%3D107885867715487&show_text=true&width=500"
+                        width="100%"
+                        height="550"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    ></iframe>
+                </slide>
+                <slide>
+                    <div class="row bg-dark ">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <iframe
+                                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D449164203587650%26id%3D107885867715487&show_text=true&width=500"
+                                width="100%"
+                                height="550"
+                                style="border:none;overflow:hidden"
+                                scrolling="no"
+                                frameborder="0"
+                                allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            ></iframe>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </slide>
+            </carousel>
         </div>
     `,
-    styles: [
-        `
-
-
-        `,
-    ],
+    styles: [``],
+    providers: [{ provide: CarouselConfig, useValue: { interval: 5000, noPause: true, showIndicators: true } }],
 })
 export class HomeComponent implements OnInit {
-    imgSrc =
-        'https://scontent.frba2-2.fna.fbcdn.net/v/t1.6435-9/118771630_107887714381969_1872225973628943776_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=62dylFG6soUAX9FckIT&tn=nUXxe2Z7eNPeRc5Z&_nc_ht=scontent.frba2-2.fna&oh=bd1a74f9059f294d6e20611ff7b03a72&oe=6191DF5D';
+    constructor() {}
 
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 }

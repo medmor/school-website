@@ -1,21 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-historique',
     template: `
         <div class="container bg-white pt-1">
-            <h3>Page d'Historique en cours de construction</h3>
-            <img src="assets/en-cours-de-preparation.jpg" alt="en cours de preparation" style="width: 100%">
+            <h3>{{ 'HISTORIQUE' | translate }}</h3>
+            <img src="assets/en-cours-de-preparation.jpg" alt="en cours de preparation" style="width: 100%" />
         </div>
     `,
-    styles: []
+    styles: [],
 })
 export class HistoriqueComponent implements OnInit {
+    constructor() {}
 
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
-
+    ngOnInit(): void {}
 }
