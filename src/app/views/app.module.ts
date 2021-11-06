@@ -11,8 +11,6 @@ import { HomeModule } from './home/home.module';
 import { HistoriqueModule } from './historique/historique.module';
 import { ReglementModule } from './reglement/reglement.module';
 import { EvenementsModule } from './evenement/evenement.module';
-import { APP_BASE_HREF } from '@angular/common';
-import { environment } from 'src/environments/environment.prod';
 
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
@@ -52,7 +50,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ],
     bootstrap: [AppComponent],
     providers: [
-        { provide: APP_BASE_HREF, useValue: environment.baseHref },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: APIInterceptor,
