@@ -1,0 +1,49 @@
+{
+    "NAVBAR": {
+        "BRAND": {
+            "HEADING": "Lycée Ibn Batouta",
+            "SMALL": "AKLIM"
+        },
+        "BUTTON-IDENTIFICATION": "S'identifier",
+        "BUTTON-LANGUAGE": "Français",
+        "LIST": {
+            "ACCEUIL": "Acceuil",
+            "REGLEMENT": "Reglement",
+            "HISTORIQUE": "Historique",
+            "EVENEMENTS": "Evenements",
+            "CLUB-INFORMATIQUE": "Club Informatique"
+        }
+    },
+    "ACCEUIL": "Page d'acceuil; en cours de construction",
+    "REGLEMENT": "Page de reglement; en cours de construction",
+    "HISTORIQUE": "Page d'historique; en cours de construction",
+    "EVENEMENTS": "Page d'événements; en cours de construction",
+    "CLUB-INFORMATIQUE": {
+        "firstCard": {
+            "title": "Qu’est-ce que le club informatique ?",
+            "text": "C’est un club pédagogique créé dans le but d’apprendre aux élèves les bases de la programmation informatique."
+        },
+        "cards": [
+            {
+                "title": "Qu’apprendront les élèves ?",
+                "text": "Les élèves apprendront la programmation web (html, css, javascript) à travers la création d’un simple site web du lycée, des simples projets, et des petits jeux."
+            },
+            {
+                "title": "À qui s’adresse ce club ?",
+                "text": "Tous les élèves qui veulent apprendre à programmer ! Nous commençons par les bases absolues, et après, les élèves peuvent passer a la création de projets plus avancés."
+            }
+        ],
+        "projectsTitle": "Exemples de projets à réaliser durant les séances",
+        "projects": [
+            { "title": "Deviner le nombre", "path": "/guess-the-number" },
+            { "title": "Un simple compteur de clic", "path": "/simple-click-counter" },
+            { "title": "Résoudre une équation du premier degré", "path": "/equation-solver" },
+            { "title": "Chronomètre", "path": "/chronometre" },
+            { "title": "Calculateur", "path": "/calculator" },
+            { "title": "Jeu de Tic Tac Toe", "path": "/tic-tac-toe" },
+            { "title": "Simple jeu de mémoire", "path": "/memory-game" },
+            { "title": "Simple jeu de correspondance", "path": "/matching-game" }
+        ],
+        "projectsCardButton": "Voir"
+    }
+}
