@@ -11,6 +11,8 @@ import { HomeModule } from './home/home.module';
 import { HistoriqueModule } from './historique/historique.module';
 import { ReglementModule } from './reglement/reglement.module';
 import { EvenementsModule } from './evenement/evenement.module';
+import { APP_BASE_HREF } from '@angular/common';
+import { environment } from 'src/environments/environment.prod';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -37,5 +39,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         }),
     ],
     bootstrap: [AppComponent],
+    providers: [{ provide: APP_BASE_HREF, useValue: environment.baseHref }],
 })
 export class AppModule {}

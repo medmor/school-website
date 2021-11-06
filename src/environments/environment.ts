@@ -4,8 +4,6 @@
 
 export const environment = {
     production: false,
-    facebookAppId: '308539687414382',
-    apiUrl: '',
 };
 
 /*
